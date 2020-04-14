@@ -1,0 +1,33 @@
+unsigned char Angle; 
+
+void main()
+{
+    Config_I2C1();
+    Start_I2C1();
+    Write_I2C1(0xC0);
+    IN_ACK_NACK1();
+    Write_I2C1(1);
+    IN_ACK_NACK1();
+    Stop_I2C1();
+    Start_I2C1();
+    Write_I2C1(0xC1);
+    IN_ACK_NACK1();
+    Read_I2C1();
+    OUT_NACK1();
+    while(1)
+   {
+    Angle=Read_I2C1();
+    
+
+        if (120>=Angle<=250)
+      
+        {
+         LED_TOP_GREEN_ON();
+        }
+    else 
+         
+          LED_TOP_RED_ON();
+   }
+
+ }
+   
